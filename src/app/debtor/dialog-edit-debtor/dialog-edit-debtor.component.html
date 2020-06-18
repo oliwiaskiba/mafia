@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Edit debtor</h1>
+
+<div mat-dialog-content [formGroup]="editForm">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="name" formControlName="name">z
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="lastname" formControlName="lastname">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput placeholder="age" formControlName="age">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Debt</mat-label>
+    <input matInput placeholder="debt" formControlName="debt">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input matInput placeholder="location" formControlName="location">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button (click)="updateDebtor(debtor.id)">Edit</button>
+</div>

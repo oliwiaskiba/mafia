@@ -1,0 +1,42 @@
+<nav>
+
+  <ul>
+    <li>Mafia</li>
+    <li>Username: {{login}}</li>
+    <li style="float:right" (click)="logout();">LOG OUT</li>
+    <li *ngIf="!isEditing; else editing" (click)="edit()">Customize your dashboard</li>
+  </ul>
+
+  <ng-template #editing>
+    <span>
+      <mat-checkbox color="primary" *ngFor="let widget of widgets" [checked]="widget.checked" (change)="checkUncheck(widget, $event)">
+        {{widget.options.title}}
+      </mat-checkbox>
+      <button mat-flat-button color="primary" (click)="confirm()">Confirm</button>
+      <button mat-flat-button (click)="cancel()">Cancel</button>
+    </span>
+  </ng-template>
+
+</nav>
+
+<ngx-widget-grid [rows]="100" [columns]="100" [showGrid]="true">
+
+  <span *ngFor="let widget of widgets">
+  <ngx-widget *ngIf="isVisible(widget)" [(position)]="widget.position" [movable]="isEditing" [resizable]="isEditing">
+
+    <div *ngIf="widget.type == 0">
+      <app-debtors-list (selectedDebtor)="debtorLocation($event)"></app-debtors-list>
+    </div>
+
+    <div *ngIf="widget.type == 1">
+      <app-killers-list (selectedKiller)="killerLocation($event)"></app-killers-list>
+    </div>
+
+    <div *ngIf="widget.type == 2">
+      <app-map  [killer]="killers" [debtor]="debtors" [selectedKiller]="selectedKiller" [selectedDebtor]="selectedDebtor"></app-map>
+    </div>
+
+  </ngx-widget>
+  </span>
+
+</ngx-widget-grid>

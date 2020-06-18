@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Edit killer</h1>
+
+<div mat-dialog-content [formGroup]="editForm">
+  <mat-form-field>
+    <mat-label>Pseudonym</mat-label>
+    <input matInput placeholder="pseudonym" formControlName="pseudonym">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Salary</mat-label>
+    <input matInput placeholder="salary" formControlName="salary">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input matInput placeholder="location" formControlName="location">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button (click)="updateKiller(killer.id)">Edit</button>
+</div>

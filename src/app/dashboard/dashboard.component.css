@@ -1,0 +1,22 @@
+ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  display: block;
+  color: white;
+  padding: 14px 16px;
+}
+
+mat-checkbox {
+  color: white;
+  padding: 10px;
+}
+
+li:hover {
+  background-color: #111;
+}

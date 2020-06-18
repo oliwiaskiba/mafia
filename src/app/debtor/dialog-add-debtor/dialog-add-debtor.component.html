@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Add debtor</h1>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="debtor.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="debtor.lastname">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput [(ngModel)]="debtor.age">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Debt</mat-label>
+    <input matInput [(ngModel)]="debtor.debt">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input matInput [(ngModel)]="debtor.location">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button (click)="addDebtor()">Add</button>
+</div>

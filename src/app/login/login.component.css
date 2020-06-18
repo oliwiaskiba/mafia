@@ -1,0 +1,22 @@
+:host {
+  text-align: center;
+  display: block;
+  margin-top: 20%;
+}
+
+form {
+  max-width: 300px;
+  margin: auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-error {
+  padding: 10px;
+}
+
+.actions {
+  text-align: center;
+}
