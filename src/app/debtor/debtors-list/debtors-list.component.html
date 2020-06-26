@@ -1,5 +1,9 @@
-<mat-card>
-  <mat-card-title>Debtors <button mat-raised-button color="primary" (click)="openAddDialog()">Add Debtor</button></mat-card-title>
+<mat-toolbar>
+  <span>Debtors</span>
+  <button mat-icon-button color="primary" (click)="openAddDialog()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">add_box</mat-icon>
+  </button>
+</mat-toolbar>
 
 <div class="example-table-container">
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -54,4 +58,3 @@
 
 </table>
 </div>
-</mat-card>

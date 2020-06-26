@@ -38,5 +38,6 @@ export class DialogEditDebtorComponent implements OnInit {
   updateDebtor(debtorId: number) {
     this.debtorsService.updateDebtor(debtorId, this.editForm.value).subscribe(
       data => console.log(data), error => console.log(error));
+    this.dialogRef.close();
   }
 }

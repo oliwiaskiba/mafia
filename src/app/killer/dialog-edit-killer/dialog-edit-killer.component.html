@@ -3,19 +3,19 @@
 <div mat-dialog-content [formGroup]="editForm">
   <mat-form-field>
     <mat-label>Pseudonym</mat-label>
-    <input matInput placeholder="pseudonym" formControlName="pseudonym">
+    <input matInput placeholder="pseudonym" formControlName="pseudonym" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Salary</mat-label>
-    <input matInput placeholder="salary" formControlName="salary">
+    <input matInput placeholder="salary" formControlName="salary" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Location</mat-label>
-    <input matInput placeholder="location" formControlName="location">
+    <input matInput placeholder="location" formControlName="location" required>
   </mat-form-field>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button (click)="updateKiller(killer.id)">Edit</button>
+  <button mat-button (click)="updateKiller(killer.id)" [disabled]="editForm.invalid">Edit</button>
 </div>

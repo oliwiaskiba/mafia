@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { MatDialog } from '@angular/material';
+import {Killer} from '../killer';
+import {DialogOrderComponent} from '../killer/dialog-order/dialog-order.component';
+import {ErrorDialogComponent} from './error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +15,9 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  error = '';
   hide = true;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -24,6 +27,12 @@ export class LoginComponent implements OnInit {
   }
 
   get f() { return this.loginForm.controls; }
+
+  openErrorDialog() {
+    this.dialog.open(ErrorDialogComponent, {
+      width: '250px'
+    });
+  }
 
   login() {
     this.authService.login(
@@ -35,8 +44,9 @@ export class LoginComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.router.navigate(['/dashboard']);
+        } else {
+          this.openErrorDialog();
         }
-        this.error = 'Invalid login or password';
       });
   }
 

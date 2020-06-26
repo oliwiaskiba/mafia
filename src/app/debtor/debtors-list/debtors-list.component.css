@@ -1,5 +1,5 @@
-mat-card {
-  max-height: 333px;
+.example-table-container {
+  max-height: 300px;
   overflow: auto;
 }
 

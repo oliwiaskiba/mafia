@@ -3,27 +3,27 @@
 <div mat-dialog-content [formGroup]="editForm">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput placeholder="name" formControlName="name">z
+    <input matInput placeholder="name" formControlName="name" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Last Name</mat-label>
-    <input matInput placeholder="lastname" formControlName="lastname">
+    <input matInput placeholder="lastname" formControlName="lastname" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Age</mat-label>
-    <input matInput placeholder="age" formControlName="age">
+    <input matInput placeholder="age" formControlName="age" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Debt</mat-label>
-    <input matInput placeholder="debt" formControlName="debt">
+    <input matInput placeholder="debt" formControlName="debt" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Location</mat-label>
-    <input matInput placeholder="location" formControlName="location">
+    <input matInput placeholder="location" formControlName="location" required>
   </mat-form-field>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button (click)="updateDebtor(debtor.id)">Edit</button>
+  <button mat-button (click)="updateDebtor(debtor.id)" [disabled]="editForm.invalid">Edit</button>
 </div>

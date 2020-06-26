@@ -1,18 +1,24 @@
 <h1 mat-dialog-title>Add killer</h1>
 
 <div mat-dialog-content>
+  <form #addForm="ngForm">
   <mat-form-field>
     <mat-label>Pseudonym</mat-label>
-    <input matInput [(ngModel)]="killer.pseudonym">
+    <input matInput [(ngModel)]="killer.pseudonym" name="pseudonym" required>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Salary</mat-label>
-    <input matInput [(ngModel)]="killer.salary">
+    <input matInput [(ngModel)]="killer.salary" name="salary" required>
   </mat-form-field>
-  <button mat-button (click)="openMapDialog()">Choose location</button>
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input matInput [(ngModel)]="killer.location" name="location" required>
+  </mat-form-field>
+  <!--<button mat-button (click)="openMapDialog()">Choose location</button>-->
+  </form>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button (click)="addKiller()">Add</button>
+  <button mat-button (click)="addKiller()" [disabled]="addForm.form.invalid">Add</button>
 </div>

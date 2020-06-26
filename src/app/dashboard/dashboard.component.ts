@@ -76,6 +76,7 @@ export class DashboardComponent implements OnInit {
   confirm() {
     this.isEditing = false;
     this.saveWidgets();
+    this.getWidgets();
   }
 
   cancel() {

@@ -1,44 +1,19 @@
 <h1 mat-dialog-title>Select debtor</h1>
-
-<div class="example-table-container">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let debtor"> {{debtor.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="lastname">
-      <th mat-header-cell *matHeaderCellDef> Last Name </th>
-      <td mat-cell *matCellDef="let debtor"> {{debtor.lastname}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef> Age </th>
-      <td mat-cell *matCellDef="let debtor"> {{debtor.age}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="debt">
-      <th mat-header-cell *matHeaderCellDef> Debt </th>
-      <td mat-cell *matCellDef="let debtor"> {{debtor.debt}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef> Select </th>
-      <td mat-cell *matCellDef="let debtor, let killer">
-        <button *ngIf="debtor.isTarget == false; else cancel" mat-raised-button (click)="setTarget(killer.id, debtor.id)">Select</button>
-        <ng-template #cancel>
-          <button mat-raised-button (click)="cancelTarget(debtor.id)">Cancel</button>
-        </ng-template>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  </table>
-</div>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close</button>
+<div>
+  <mat-form-field>
+  <mat-select [disabled]="killer.targetId != null" [(value)]="selectedDebtorId" [formControl]="formControl" required>
+    <mat-option *ngFor="let debtor of debtors | async" [value]="debtor.id">
+     {{debtor.name}} {{debtor.lastname}}
+    </mat-option>
+  </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button *ngIf="killer.targetId == null; else cancel" (click)="setTarget(killer.id, selectedDebtorId)"
+            [disabled]="formControl.hasError('required')">Set target</button>
+    <ng-template #cancel>
+      <p>Target already exists</p>
+      <button mat-button (click)="cancelTarget(killer.targetId)">Cancel target</button>
+    </ng-template>
+    <button mat-button (click)="onNoClick()">Close</button>
+  </div>
 </div>

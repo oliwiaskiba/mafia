@@ -26,6 +26,7 @@ export class DialogAddKillerComponent implements OnInit {
     this.killerService.addKiller(this.killer)
       .subscribe(data => console.log(data), error => console.log(error));
     this.killer = new Killer();
+    this.dialogRef.close();
   }
 
   openMapDialog(): void {

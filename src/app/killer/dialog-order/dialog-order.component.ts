@@ -1,8 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import { Debtor } from '../../debtor';
 import { MAT_DIALOG_DATA, MatDialogRef, MatTableDataSource } from '@angular/material';
 import { DebtorsService } from '../../service/debtors.service';
 import { KillersService } from '../../service/killers.service';
+import {Observable} from 'rxjs';
+import {Killer} from '../../killer';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-order',
@@ -11,9 +14,11 @@ import { KillersService } from '../../service/killers.service';
 })
 export class DialogOrderComponent implements OnInit {
 
-  debtorData: Debtor[];
-  dataSource = new MatTableDataSource(this.debtorData);
-  displayedColumns = ['name', 'lastname', 'age', 'debt', 'select'];
+  debtors: Observable<Debtor[]>;
+  killer: Killer;
+  selectedDebtorId: number;
+
+  formControl = new FormControl('', Validators.required);
 
   constructor(
     private debtorsService: DebtorsService, private killersService: KillersService,
@@ -21,27 +26,30 @@ export class DialogOrderComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogOrderComponent>) {}
 
   ngOnInit() {
-    this.getDebtors();
+    this.killer = this.data;
+    this.debtors = this.debtorsService.getDebtors();
+    this.selectedDebtorId = this.getDebtor();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  getDebtors() {
-    this.debtorsService.getDebtors().subscribe(debtorData => {
-      this.debtorData = debtorData;
-      this.dataSource.data = this.debtorData;
-    });
+  getDebtor() {
+    if (this.killer.targetId != null)  {
+      return this.killer.targetId;
+    }
   }
 
   setTarget(killerId: number, targetId: number) {
     this.killersService.setTarget({killerId, targetId}).subscribe(
       data => console.log(data), error => console.log(error));
+    this.dialogRef.close();
   }
 
   cancelTarget(targetId: number) {
     this.killersService.cancelTarget(targetId).subscribe(
       data => console.log(data), error => console.log(error));
+    this.dialogRef.close();
   }
 }

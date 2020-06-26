@@ -28,5 +28,6 @@ export class DialogForgiveComponent implements OnInit {
           console.log(data);
         },
         error => console.log(error));
+    this.dialogRef.close();
   }
 }

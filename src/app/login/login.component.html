@@ -9,15 +9,14 @@
 
   <mat-form-field>
     <input matInput [type]="hide ? 'password' : 'text'" id="password" placeholder="Password" formControlName="password" required>
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
+      <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        {{hide ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
     <mat-error *ngIf="loginForm.controls['password'].invalid">{{getMessage()}}</mat-error>
   </mat-form-field>
 
   <div class="actions">
-    <button mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid">LOG IN</button>
-    <mat-error>{{error}}</mat-error>
+    <button mat-raised-button color="primary" (click)="login()" [disabled]="loginForm.invalid">LOG IN</button>
   </div>
 
 </form>

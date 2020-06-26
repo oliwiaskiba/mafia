@@ -36,5 +36,6 @@ export class DialogEditKillerComponent implements OnInit {
   updateKiller(killerId: number) {
     this.killersService.updateKiller(killerId, this.editForm.value).subscribe(
       data => console.log(data), error => console.log(error));
+    this.dialogRef.close();
   }
 }

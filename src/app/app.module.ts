@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSortModule,
-    MatTableModule, MatToolbarModule, MatCheckboxModule, MatDialogModule, MatIconModule
+    MatTableModule, MatToolbarModule, MatCheckboxModule, MatDialogModule, MatIconModule, MatSlideToggleModule, MatSelectModule
 } from '@angular/material';
 import { NgxWidgetGridModule } from 'ngx-widget-grid';
 import { KillersListComponent } from './killer/killers-list/killers-list.component';
@@ -26,6 +26,7 @@ import { DialogOrderComponent } from './killer/dialog-order/dialog-order.compone
 import { DialogForgiveComponent } from './debtor/dialog-forgive/dialog-forgive.component';
 import { DialogMapKillerComponent } from './killer/dialog-map-killer/dialog-map-killer.component';
 import { DialogMapDebtorComponent } from './debtor/dialog-map-debtor/dialog-map-debtor.component';
+import { ErrorDialogComponent } from './login/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DialogMapDebtorComponent } from './debtor/dialog-map-debtor/dialog-map-
     DialogOrderComponent,
     DialogForgiveComponent,
     DialogMapKillerComponent,
-    DialogMapDebtorComponent
+    DialogMapDebtorComponent,
+    ErrorDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -63,7 +65,9 @@ import { DialogMapDebtorComponent } from './debtor/dialog-map-debtor/dialog-map-
         MatCardModule,
         MatDialogModule,
         MatSortModule,
-        MatIconModule
+        MatIconModule,
+        MatSlideToggleModule,
+        MatSelectModule
     ],
   entryComponents: [
     DialogAddDebtorComponent,
@@ -73,7 +77,8 @@ import { DialogMapDebtorComponent } from './debtor/dialog-map-debtor/dialog-map-
     DialogOrderComponent,
     DialogForgiveComponent,
     DialogMapKillerComponent,
-    DialogMapDebtorComponent
+    DialogMapDebtorComponent,
+    ErrorDialogComponent
   ],
   providers: [
     {

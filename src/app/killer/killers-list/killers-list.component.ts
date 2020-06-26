@@ -5,6 +5,7 @@ import { MatDialog, MatSort, MatTableDataSource } from '@angular/material';
 import { DialogAddKillerComponent } from '../dialog-add-killer/dialog-add-killer.component';
 import { DialogEditKillerComponent } from '../dialog-edit-killer/dialog-edit-killer.component';
 import { DialogOrderComponent } from '../dialog-order/dialog-order.component';
+import {DebtorsListComponent} from '../../debtor/debtors-list/debtors-list.component';
 
 @Component({
   selector: 'app-killers-list',
@@ -62,8 +63,11 @@ export class KillersListComponent implements OnInit {
 
   openOrderDialog(killer: Killer) {
     this.dialog.open(DialogOrderComponent, {
-      width: '400px',
-      data: {id: killer.id}
+      width: '250px',
+      data: {
+        id: killer.id,
+        targetId: killer.targetId
+      }
     }).afterClosed().subscribe(() => {
       this.getKillers();
     });

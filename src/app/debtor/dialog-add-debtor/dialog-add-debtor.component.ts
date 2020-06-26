@@ -25,5 +25,6 @@ export class DialogAddDebtorComponent {
     this.debtorService.addDebtor(this.debtor)
       .subscribe(data => console.log(data), error => console.log(error));
     this.debtor = new Debtor();
+    this.dialogRef.close();
   }
 }
