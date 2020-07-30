@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import { Widgets } from '../widgets';
 import { AuthService } from '../service/auth.service';
 import { DashboardService } from '../service/dashboard.service';

@@ -1,3 +1,7 @@
-<mat-toolbar><span>Map</span></mat-toolbar>
-
+<mat-toolbar>
+  <span>Map</span>
+  <button mat-icon-button color="primary" (click)="getCenter()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">my_location</mat-icon>
+  </button>
+</mat-toolbar>
 <div id="map" class="map"></div>

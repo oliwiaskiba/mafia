@@ -27,7 +27,7 @@ export class MapComponent implements OnInit, OnChanges {
   mousePosition: MousePosition;
 
   public view = new View ({
-    center: fromLonLat([19.5, 49.5]),
+    center: fromLonLat([19.5, 51.5]),
     zoom: 6
   });
 
@@ -39,6 +39,9 @@ export class MapComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getMousePosition();
     this.getMap();
+    if (this.map && this.debtor && this.killer) {
+      this.addPoints();
+    }
     /*let that = this;
     setTimeout(function () {
       that.map.updateSize();
@@ -51,7 +54,7 @@ export class MapComponent implements OnInit, OnChanges {
     }
     if (this.map && this.debtor && this.killer) {
     this.addPoints();
-  }
+    }
     if (this.selectedKiller) {
       this.getKillerZoom(this.selectedKiller);
     }
@@ -64,7 +67,7 @@ export class MapComponent implements OnInit, OnChanges {
     this.view.animate({
       center: fromLonLat(this.getKillersCoordinates(killer)),
       duration: 2000,
-      zoom: 8
+      zoom: 10
     });
     console.log(this.getKillersCoordinates(killer));
   }
@@ -73,9 +76,18 @@ export class MapComponent implements OnInit, OnChanges {
     this.view.animate({
       center: fromLonLat(this.getDebtorsCoordinates(debtor)),
       duration: 2000,
-      zoom: 8
+      zoom: 10,
+
     });
     console.log(this.getDebtorsCoordinates(debtor));
+  }
+
+  getCenter() {
+    this.view.animate({
+      center: fromLonLat([19.5, 51.5]),
+      duration: 2000,
+      zoom: 6
+    });
   }
 
   getMap() {
