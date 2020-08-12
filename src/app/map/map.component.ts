@@ -39,13 +39,6 @@ export class MapComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getMousePosition();
     this.getMap();
-    if (this.map && this.debtor && this.killer) {
-      this.addPoints();
-    }
-    /*let that = this;
-    setTimeout(function () {
-      that.map.updateSize();
-    }, 100);*/
   }
 
   ngOnChanges() {
